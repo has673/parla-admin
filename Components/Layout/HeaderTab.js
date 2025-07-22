@@ -3,7 +3,13 @@ import Image from "next/image";
 import { Search, SlidersHorizontal } from "lucide-react";
 // import SidebarModal from "../Modals/SidebarModal";
 
-export default function HeaderTab({ links, activeTab, setActiveTab, title }) {
+export default function HeaderTab({
+  links,
+  activeTab,
+  setActiveTab,
+  title,
+  barDisplay = true,
+}) {
   return (
     <header
       className="flex flex-col md:flex-row justify-between p-4 py-0 border-b border-b-[#ECEAEA] bg-white w-full gap-y-2 md:gap-y-0"
@@ -22,8 +28,8 @@ export default function HeaderTab({ links, activeTab, setActiveTab, title }) {
       </div>
 
       {/* Tabs Section */}
-      <div className="flex-1 flex flex-row justify-between items-end  md:px-6 overflow-x-auto md:mx-28">
-        <h3 className="text-[var(--color-dark)] md:text-xl text-sm font-bold md:py-3">
+      <div className="flex-1 flex flex-row justify-between items-center  md:px-6 overflow-x-auto md:mx-14">
+        <h3 className="text-[#202224] md:text-xl text-sm font-semibold md:py-3">
           {title}
         </h3>
 
@@ -45,22 +51,25 @@ export default function HeaderTab({ links, activeTab, setActiveTab, title }) {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center bg-gray-100 rounded-full overflow-hidden w-fit shadow-sm">
-          {/* Search Icon & Input */}
-          <div className="flex items-center px-3">
-            <Search className="w-4 h-4 text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search address, or near you"
-              className="bg-transparent outline-none px-2 py-2 text-sm text-gray-700"
-            />
-          </div>
 
-          {/* Filter Button */}
-          <button className="bg-orange-500 p-2 rounded-r-full hover:bg-orange-600 transition-all duration-200">
-            <SlidersHorizontal className="w-4 h-4 text-white" />
-          </button>
-        </div>
+        {barDisplay === true && (
+          <div className="flex items-center bg-[#EFEFEF] rounded-[18px] overflow-hidden  h-17 ">
+            {/* Search Icon & Input */}
+            <div className="flex items-center px-3">
+              <Search className="w-8 h-8 text-[var(--orange)]" />
+              <input
+                type="text"
+                placeholder="Search address, or near you"
+                className="bg-transparent outline-none px-2 py-2 text-base text-[#3F3F3FE5]"
+              />
+            </div>
+
+            {/* Filter Button */}
+            <button className="bg-[var(--orange)] p-2 rounded-[10px] transition-all duration-200  h-17 w-21  flex justify-center items-center">
+              <SlidersHorizontal className="w-4 h-4 text-white" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Icons Section 
