@@ -8,7 +8,7 @@ import LegendInput from "../../../../Components/Input/LegendInput";
 import { useLanguage } from "@/Context/LanguageContext";
 
 const ForgotPassword = () => {
-  const role = "customer";
+  const role = "admin";
   const [email, setEmail] = useState("");
   const { t } = useLanguage(); // translation hook
 

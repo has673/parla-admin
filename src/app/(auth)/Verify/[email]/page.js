@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Heading from "../../../../../Components/Text/Heading";
 import AuthButton from "../../../../../Components/Buttons/AuthButton";
 import { useParams } from "next/navigation";
-import { useTranslations } from "next-intl";
+
 import OtpInput from "../../../../../Components/Input/OtpInput";
 import { useLanguage } from "@/Context/LanguageContext";
 import Text from "../../../../../Components/Text/Text";
@@ -12,16 +12,17 @@ import Text from "../../../../../Components/Text/Text";
 const Verify = () => {
   const params = useParams();
   const { t } = useLanguage(); // Load locale messages
-  const role = "customer";
+  const role = "admin";
   const { email } = params;
   const emails = decodeURIComponent(email);
 
   const [code, setCode] = useState("");
 
-  const handleOtpChange = () => {
-    setCode(value);
+  const handleOtpChange = (value) => {
+    setCode(value); // ✅ correctly captures OTP value from OtpInput
   };
 
+  console.log(code, "kk");
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="flex flex-col items-center">

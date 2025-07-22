@@ -11,7 +11,7 @@ import { useLanguage } from "@/Context/LanguageContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("customer");
+  const [role, setRole] = useState("admin");
 
   const { t } = useLanguage(); // ✅ Use context
 

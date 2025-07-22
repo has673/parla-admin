@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { Search, SlidersHorizontal } from "lucide-react";
 // import SidebarModal from "../Modals/SidebarModal";
 
 export default function HeaderTab({ links, activeTab, setActiveTab, title }) {
@@ -44,6 +45,22 @@ export default function HeaderTab({ links, activeTab, setActiveTab, title }) {
             ))}
           </ul>
         </nav>
+        <div className="flex items-center bg-gray-100 rounded-full overflow-hidden w-fit shadow-sm">
+          {/* Search Icon & Input */}
+          <div className="flex items-center px-3">
+            <Search className="w-4 h-4 text-gray-500" />
+            <input
+              type="text"
+              placeholder="Search address, or near you"
+              className="bg-transparent outline-none px-2 py-2 text-sm text-gray-700"
+            />
+          </div>
+
+          {/* Filter Button */}
+          <button className="bg-orange-500 p-2 rounded-r-full hover:bg-orange-600 transition-all duration-200">
+            <SlidersHorizontal className="w-4 h-4 text-white" />
+          </button>
+        </div>
       </div>
 
       {/* Icons Section 

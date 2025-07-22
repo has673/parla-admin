@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 
 const OtpInput = ({ length, onChange }) => {
   const [otp, setOtp] = useState(Array(length).fill(""));
+
   const inputsRef = useRef([]);
 
   const handleChange = (e, index) => {

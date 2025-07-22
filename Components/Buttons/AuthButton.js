@@ -44,21 +44,34 @@ const AuthButton = ({ btnText, data }) => {
           {
             headers: {
               "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": "true",
             },
           }
         );
         const info = request.data;
-        console.log(info);
+        console.log(info, "info");
 
         toast.success(info.message || "Logged in successfully");
         // You can redirect here if needed
-        console.log(info.token);
+
         // localStorage.setItem("token", info.token);
         // localStorage.setItem("userData", JSON.stringify(info.userData));
+        const { userData } = info;
+
+        const safeUserData = {
+          id: userData._id,
+          email: userData.email,
+          role: userData.role,
+          image: userData.image,
+        };
 
         Cookies.set("token", info.token, { expires: 7 }); // expires in 7 days
-        Cookies.set("userData", JSON.stringify(info.userData), { expires: 7 });
-        router.push("/HomeScreen");
+        Cookies.set("userData", JSON.stringify(safeUserData), {
+          expires: 7,
+          secure: true,
+          sameSite: "Lax",
+        });
+        // router.push("/HomeScreen");
         setLoading(false);
         return;
       } catch (error) {
@@ -68,6 +81,8 @@ const AuthButton = ({ btnText, data }) => {
       }
     } else if (path.startsWith("/Verify")) {
       try {
+        console.log(data, "data");
+
         setLoading(true);
         const request = await axios.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/authentication/otpVerification`,

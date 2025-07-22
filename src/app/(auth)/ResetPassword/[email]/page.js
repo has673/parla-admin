@@ -9,7 +9,7 @@ import AuthButton from "../../../../../Components/Buttons/AuthButton";
 import { useLanguage } from "@/Context/LanguageContext"; // ✅ import language context
 
 const ResetPassword = () => {
-  const role = "customer";
+  const role = "admin";
   const params = useParams();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
